@@ -1,6 +1,18 @@
 # Complete Guide: How an App Call Reaches Hardware in Android
 ## Global Overview with Architecture Diagrams
 ### High-Level Architecture Flow
+```
+┌─────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│    App      │    │   Framework  │    │  System      │    │   Hardware   │
+│             │    │              │    │   Services   │    │              │
+│ vibrate(500)│ →  │ getSystem()  │ →  │ Vibrator     │ →  │ Vibration    │
+│             │    │              │    │ Service      │    │ Motor        │
+└─────────────┘    └──────────────┘    └──────────────┘    └──────────────┘
+       │                    │                   │                  │
+       │ Java Method Call   │    Binder IPC     │   JNI → HAL      │ Electrical
+       │                    │    (Process       │   → Kernel       │ Signal
+       └────────────────────┘    Boundary)      └──────────────────┘
+```
 
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                            APPLICATION LAYER                            │
