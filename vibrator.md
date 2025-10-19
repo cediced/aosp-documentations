@@ -13,7 +13,7 @@
        │                    │    (Process       │   → Kernel       │ Signal
        └────────────────────┘    Boundary)      └──────────────────┘
 ```
-
+```
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                            APPLICATION LAYER                            │
 │  YourApp.java → Vibrator.vibrate(500)                                   │
@@ -43,7 +43,7 @@
 │                          HARDWARE LAYER                                 │
 │  Motor Driver IC → Vibration Motor                                      │
 └─────────────────────────────────────────────────────────────────────────┘
-
+```
 | Interface | Method | Duration (500ms) | Package Name    |
 |-----------|--------|------------------|-----------------|
 | Token     | ID (0) | 0x00000000000001F4 | "com.example.app" |
