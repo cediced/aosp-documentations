@@ -13,9 +13,9 @@
        │                    │    (Process       │   → Kernel       │ Signal
        └────────────────────┘    Boundary)      └──────────────────┘
 ```
-```
 ### Detailed Layer Architecture
 
+```
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                            APPLICATION LAYER                            │
 │  YourApp.java → Vibrator.vibrate(500)                                   │
