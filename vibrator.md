@@ -98,8 +98,29 @@ aosp/
         └── android/
             └── vibrator/                  # QEMU vibrator implementation
 ```
+### Detailed Call Flow
+1. Application Layer
+java
+// App code
+Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+vibrator.vibrate(500); // Vibrate for 500ms
+2. Framework Layer
+Vibrator.java → VibratorService.java (System Service)
 
+Binder IPC call to system service
 
-| Interface | Method | Duration (500ms) | Package Name    |
-|-----------|--------|------------------|-----------------|
-| Token     | ID (0) | 0x00000000000001F4 | "com.example.app" |
+Permission checks (VIBRATE permission)
+
+Policy enforcement (do not disturb, settings)
+
+3. Native Layer / HAL (Hardware Abstraction Layer)
+VibratorService → Vibrator HAL → Kernel Driver
+
+HAL interface implementation (vendor-specific)
+
+Communication with kernel via sysfs or device nodes
+
+4. Hardware Layer
+Kernel Driver → GPIO/PWM → Vibrator Motor
+
+Electrical signal to vibration motor
